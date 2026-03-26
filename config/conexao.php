@@ -1,15 +1,16 @@
 <?php
+$host = "localhost";
+$banco   = "projetoCronograma";
+$usuario = "root";
+$senha = "";
 
-    $local = "localhost";
-    $usuario = "root";
-    $senha = "";
-    $banco = "projetoCronograma";
-    
-    $conexao = mysqli_connect($local,$usuario,$senha,$banco);
-
-    header("Content-Type: text-html; charset=utf-8");
-    mysqli_query($conexao,"SET NAMES 'utf8'");
-    mysqli_query($conexao,"SET character_set_connection = utf8");
-    mysqli_query($conexao,"SET character_set_client = utf8");
-    mysqli_query($conexao,"SET character_set_results = utf8");
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$banco;charset=utf8", $usuario, $senha);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erro na conexão: " . $e->getMessage());
+}
+catch (Exception $e) {
+    die("Erro genérico: " . $e->getMessage());
+}
 ?>
