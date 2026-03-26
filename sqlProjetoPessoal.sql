@@ -19,9 +19,6 @@ CREATE TABLE materias (
     ON DELETE CASCADE
 );
 
--- =========================
--- DIFICULDADES
--- =========================
 CREATE TABLE dificuldades (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
@@ -48,7 +45,8 @@ CREATE TABLE disponibilidade (
     id INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     dia_semana TINYINT NOT NULL, -- 0 = domingo, 6 = sábado
-    horas_disponiveis INT NOT NULL,
+    hora_inicio TIME NOT NULL,
+    hora_fim TIME NOT NULL,
 
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
     ON DELETE CASCADE
