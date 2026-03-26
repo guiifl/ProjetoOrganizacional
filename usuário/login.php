@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["nome"] = $usuario["nome"];
 
         echo "Login realizado!";
-        header("Location: ../index.php");
+        header("Location: ../materias/create.php");
+        exit();
     } else {
         echo "Email ou senha inválidos.";
     }
