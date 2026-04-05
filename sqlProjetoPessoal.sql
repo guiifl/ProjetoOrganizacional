@@ -23,8 +23,6 @@ CREATE TABLE dificuldades (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(50) NOT NULL,
     nivel TINYINT NOT NULL,
-    cor CHAR(7) NOT NULL,
-    descricao TEXT,
 
     UNIQUE (nivel)
 );
@@ -82,3 +80,11 @@ CREATE TABLE sessoes_estudo (
     FOREIGN KEY (id_materia) REFERENCES materias(id)
     ON DELETE CASCADE
 );
+
+INSERT INTO dificuldades (nome, nivel) VALUES
+('Fácil', 1),
+('Médio', 2),
+('Difícil', 3);
+
+
+
