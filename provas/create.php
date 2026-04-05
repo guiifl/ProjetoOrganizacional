@@ -1,10 +1,13 @@
 <?php
-    session_start();
-
-    if (!isset($_SESSION["id_usuario"])) {
-    die("Acesso negado.");
-    }
+session_start();
 require_once "../config/conexao.php";
+
+if (!isset($_SESSION['id_usuario'])) {
+    $_SESSION['redirect'] = $_SERVER['REQUEST_URI'];
+    header("Location: ../usuário/login.php");
+    exit;
+}
+
 
 $materias = $conexao->query("SELECT * FROM materias")->fetchAll(PDO::FETCH_ASSOC);
 $dificuldades = $conexao->query("SELECT * FROM dificuldades")->fetchAll(PDO::FETCH_ASSOC);

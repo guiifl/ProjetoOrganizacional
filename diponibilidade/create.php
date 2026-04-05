@@ -1,11 +1,13 @@
 <?php
 
     session_start();
+    require_once "../config/conexao.php";
 
-    if (!isset($_SESSION["id_usuario"])) {
-    die("Acesso negado.");
+    if (!isset($_SESSION['id_usuario'])) {
+    $_SESSION['redirect'] = $_SERVER['REQUEST_URI'];
+    header("Location: ../usuário/login.php");
+    exit;
     }
-require_once "../config/conexao.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dia = $_POST["dia_semana"];
