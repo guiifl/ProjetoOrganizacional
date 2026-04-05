@@ -17,7 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["nome"] = $usuario["nome"];
 
         echo "Login realizado!";
-        header("Location: ../materias/create.php");
+        if (isset($_SESSION['redirect'])) {
+            $redirect = $_SESSION['redirect'];
+            unset($_SESSION['redirect']);
+        header("Location: $redirect");
+        }else{
+        header("Location: /GitHub/ProjetoOrganizacional/dashboard.php");
+        }
         exit();
     } else {
         echo "Email ou senha inválidos.";
