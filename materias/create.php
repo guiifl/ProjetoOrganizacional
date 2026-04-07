@@ -2,6 +2,13 @@
 session_start();
 require_once "../config/conexao.php";
 
+if (!isset($_SESSION['id_usuario'])) {
+    $_SESSION['redirect'] = $_SERVER['REQUEST_URI'];
+    header("Location: ../usuário/login.php");
+    exit;
+}
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"];
 
